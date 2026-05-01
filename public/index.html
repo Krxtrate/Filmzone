@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FILMZONE - Discover Amazing Movies</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span class="logo-text">FILMZONE</span>
+        </div>
+        <nav id="main-nav">
+            <a href="#" class="active" data-target="dashboard-hero"><span class="icon">🏠</span> Home</a>
+            <a href="#" data-target="dashboard-featured"><span class="icon">🎟️</span> Movies</a>
+            <a href="#" data-target="about-section"><span class="icon">ℹ️</span> About</a>
+            <a href="#" class="hidden" id="nav-bookings" data-target="bookings-section"><span class="icon">📋</span> My Bookings</a>
+        </nav>
+        <div class="auth-buttons" id="auth-buttons">
+            <a href="#" class="login" id="login-btn">Login</a>
+            <a href="#" class="register" id="register-btn">Register</a>
+        </div>
+        <div class="user-profile hidden" id="user-profile">
+            <span id="welcome-text">Welcome, User</span>
+            <a href="#" class="logout" id="logout-btn">Logout</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Main Hero Section -->
+        <section class="hero dashboard-section" id="dashboard-hero">
+            <div class="badge">🍿 Your Movie Hub</div>
+            <h1>Discover Amazing<br><span class="highlight">Cinematic Experiences</span></h1>
+            <p>Book tickets for the hottest movies in town. From action-packed blockbusters to indie darlings, find and book your favorite shows in just a few clicks.</p>
+            
+            <div class="search-bar">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="search-input" placeholder="Search for movies...">
+                <button class="search-btn" id="search-btn">Search</button>
+            </div>
+
+            <div class="categories">
+                <span class="category" data-genre="Action"><span class="icon">🎬</span> Action</span>
+                <span class="category" data-genre="Drama"><span class="icon">🎭</span> Drama</span>
+                <span class="category" data-genre="Comedy"><span class="icon">😂</span> Comedy</span>
+                <span class="category" data-genre="Sci-Fi"><span class="icon">👽</span> Sci-Fi</span>
+                <span class="category" data-genre=""><span class="icon">🌟</span> All</span>
+            </div>
+        </section>
+        
+        <!-- Featured Events -->
+        <section class="featured dashboard-section" id="dashboard-featured">
+            <div class="section-header">
+                <h2>Now Showing</h2>
+                <a href="#" class="view-all">View All →</a>
+            </div>
+            <p class="subtitle">Don't miss these handpicked cinematic experiences</p>
+
+            <div class="cards-container" id="cards-container">
+                <!-- Cards injected here dynamically -->
+                <p>Loading movies...</p>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section hidden" id="about-section">
+            <div class="about-container">
+                <h2>About <span class="highlight">FILMZONE</span></h2>
+                <p>This application was developed as our final DBMS Lab Project to solve the complexities of modern movie booking systems. It features a complete relational database backend and an interactive frontend.</p>
+                
+                <div class="team-grid">
+                    <div class="team-card">
+                        <h3>Kushagr Joshi</h3>
+                        <p class="reg-no">RA2411003011964</p>
+                    </div>
+                    <div class="team-card">
+                        <h3>Kritarth Sharan</h3>
+                        <p class="reg-no">RA2411003011932</p>
+                    </div>
+                </div>
+                
+                <div class="mentor">
+                    <p>Under the Guidance of Faculty Advisor:</p>
+                    <h3>Dr Rajathi V</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Bookings Section -->
+        <section class="bookings-section hidden" id="bookings-section">
+            <div class="section-header">
+                <h2>My Bookings</h2>
+            </div>
+            <div class="bookings-container" id="bookings-list">
+                <p>Please login to view your bookings.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <!-- Login Modal -->
+    <div class="modal hidden" id="login-modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Login</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="primary-btn full-width">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal hidden" id="register-modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Sign Up</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="register-name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="register-email" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="text" id="register-phone">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="register-password" required>
+                </div>
+                <button type="submit" class="primary-btn full-width">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Booking Modal (Updated for Seat Selection) -->
+    <div class="modal hidden" id="booking-modal">
+        <div class="modal-content booking-large">
+            <span class="close-btn">&times;</span>
+            <h2>Book Tickets</h2>
+            <div id="booking-details">
+                <h3 id="book-title">Movie Title</h3>
+                <p id="book-info">Details...</p>
+            </div>
+            
+            <div class="seat-map-container">
+                <div class="screen">SCREEN</div>
+                <div class="seat-grid" id="seat-grid">
+                    <!-- Seats generated by JS -->
+                </div>
+                <div class="seat-legend">
+                    <div><span class="seat"></span> Available</div>
+                    <div><span class="seat selected"></span> Selected</div>
+                    <div><span class="seat occupied"></span> Occupied</div>
+                </div>
+            </div>
+
+            <form id="booking-form">
+                <input type="hidden" id="book-show-id">
+                <input type="hidden" id="book-selected-seats" value="0">
+                <p class="total-price">Total: ₹<span id="book-total">0</span></p>
+                <button type="submit" class="primary-btn full-width" id="confirm-booking-btn" disabled>Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden">Message</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
