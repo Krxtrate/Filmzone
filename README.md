@@ -24,4 +24,3 @@ A full-stack movie ticket booking backend system built using Node.js, Express, a
 
 ---
 
-## 📂 Project Structure
